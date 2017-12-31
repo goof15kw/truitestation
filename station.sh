@@ -12,7 +12,7 @@ name=station
 # 20130217-1945.log
 log_dir=/home/pi/logs/
 r=$RANDOM
-GET_DATE="date +%Y%m%d-%H%M%S"
+GET_DATE="date +%Y%m%dT%H%M%SZ"
 pins="4 25"
 declare -a logs=(${log_dir}pin_4_$($GET_DATE)-$r.csv ${log_dir}pin_25_$($GET_DATE)-$r.csv )
 err=${log_dir}err_$($GET_DATE)-$r.log
