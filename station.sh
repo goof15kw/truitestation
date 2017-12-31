@@ -9,12 +9,10 @@ do
 done
 
 getter="sudo Adafruit_DHT 2302"
-version=0.1
-name=station
 # 20130217-1945.log
 log_dir=/home/pi/logs/
 r=$RANDOM
-GET_DATE="date +%Y%m%dT%H%M%SZ"
+GET_DATE="date -Is"
 pins="4 25"
 declare -a logs=(${log_dir}pin_4_$($GET_DATE)-$r.csv ${log_dir}pin_25_$($GET_DATE)-$r.csv )
 err=${log_dir}err_$($GET_DATE)-$r.log
@@ -30,7 +28,6 @@ fi
 for i in "${logs[@]}"
 do
 	echo "$i"
-#	echo "# $name version $version `date` " > $i
 #	echo "# Date, Temp in C, RH in %" >> $i
 done
 
