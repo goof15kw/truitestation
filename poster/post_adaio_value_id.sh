@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e 
 DF=/tmp/data.file
 cat > $DF << EOF
 { 
