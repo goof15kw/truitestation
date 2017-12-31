@@ -39,9 +39,9 @@ DT=$(echo $DT | sed 's/ /%20/g' )
 #curl "https://docs.google.com/forms/d/e/$FORMID/formResponse?ifq&$HRID=allomonde&$TEMPCID=Hello%20World&submit=Submit"
 # googe mode curl -f "https://docs.google.com/forms/d/e/$FORMID/formResponse?ifq&$PINID=$P&$DATETIMEID=$DT&$TEMPC4ID=$T&$HRID4=$H&$TEMPC25ID=$T25&$HRID25=$H25&submit=Submit" > /dev/null
 set -x 
-/home/pi/work/poster/post_adaio_value_id.sh  $T $AIOTEMPC4ID
-/home/pi/work/poster/post_adaio_value_id.sh  $H $AIOHRID4
+/home/pi/work/truitestation/poster/post_adaio_value_id.sh  $T $AIOTEMPC4ID
+/home/pi/work/truitestation/poster/post_adaio_value_id.sh  $H $AIOHRID4
 
-/home/pi/work/poster/post_adaio_value_id.sh  $T25 $AIOTEMPC25ID
-/home/pi/work/poster//post_adaio_value_id.sh  $H25 $AIOHRID25
+/home/pi/work/truitestation/poster/post_adaio_value_id.sh  $T25 $AIOTEMPC25ID
+/home/pi/work/truitestation/poster/post_adaio_value_id.sh  $H25 $AIOHRID25
 

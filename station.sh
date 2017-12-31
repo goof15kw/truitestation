@@ -1,9 +1,11 @@
 #!/bin/bash
 
+GET_NET=/home/pi/work/truitestation/get_net.sh
+
 while [ $(date +%Y ) -lt 2016 ] ; 
 do 
 	sleep 40 
-	/home/pi/get_net.sh 
+	$GET_NET 
 done
 
 getter="sudo Adafruit_DHT 2302"
@@ -93,7 +95,7 @@ function get_n_log_united()
         RH25=$(echo $out | grep Hum | awk '{ print $7 }' )
 	d=$($GET_DATE)
 
-	if ! bash /home/pi/work/poster/post.sh $temp4 $RH4 $temp25 $RH25 $d
+	if ! bash /home/pi/work/truitestation/poster/post.sh $temp4 $RH4 $temp25 $RH25 $d
 	then 
 		echo "$d,$temp4,$RH4,$temp25,$RH25" >> $1
 	fi
@@ -101,7 +103,7 @@ function get_n_log_united()
 log=${log_dir}united_$($GET_DATE)-$r.csv 
 while sleep $nap
 do
-	/home/pi/get_net.sh 
+	$GET_NET
 	get_n_log_united $log
 #	for i in "${logs[@]}"
 #	do
