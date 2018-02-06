@@ -16,7 +16,6 @@ do
 	$GET_NET 
 done
 
-
 # 20130217-1945.log
 log_dir=/home/pi/logs/
 r=$RANDOM
