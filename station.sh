@@ -1,6 +1,14 @@
 #!/bin/bash
 
 GET_NET=/home/pi/work/truitestation/get_net.sh
+getter="sudo Adafruit_DHT 2302"
+
+test=0
+if [ $test -eq "1" ]
+then
+	GET_NET=true
+	getter="echo 'TempHum 1 2 3 4 5 6 7 8 9 10 11'"
+fi
 
 while [ $(date +%Y ) -lt 2016 ] ; 
 do 
@@ -8,7 +16,7 @@ do
 	$GET_NET 
 done
 
-getter="sudo Adafruit_DHT 2302"
+
 # 20130217-1945.log
 log_dir=/home/pi/logs/
 r=$RANDOM
