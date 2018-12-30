@@ -10,9 +10,17 @@ then
 	getter="echo 'TempHum 1 2 3 4 5 6 7 8 9 10 11'"
 fi
 
+if [ ! -z $1 ]
+then 
+	nap=$1
+else
+	nap=300
+fi
+
+$GET_NET
 while [ $(date +%Y ) -lt 2016 ] ; 
 do 
-	sleep 40 
+	sleep $nap 
 	$GET_NET 
 done
 
@@ -23,12 +31,6 @@ GET_DATE="date -Is"
 pins="4 25"
 err=${log_dir}err_$($GET_DATE)-$r.log
 
-if [ ! -z $1 ]
-then 
-	nap=$1
-else
-	nap=300
-fi
 
 function get_data()
 {
