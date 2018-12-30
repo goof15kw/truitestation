@@ -67,6 +67,10 @@ function get_n_log_united()
  	temp4=$(echo $out | grep Temp | awk '{ print $3 }' )
     RH4=$(echo $out | grep Hum | awk '{ print $7 }' )
 	
+	#echo "sleeping for a minute"
+	#sleep 60
+	#echo "Sending at $($GET_DATE) for $d"
+	
 	post_adafruit.io $temp4 $AIOTEMPC4ID $d
 	post_adafruit.io $RH4 $AIOHRID4 $d
 	
@@ -88,6 +92,8 @@ function post_adafruit.io () # value ID
 "value": "$1", 
 "lat": "45.9399757",
 "lon": "-74.4134107",
+"created_at": "$d",
+"epoch": "0",
 "ele": "439"
 }
 EOF
@@ -96,6 +102,8 @@ EOF
 	curl -k  -H "Content-Type: application/json" -H "X-AIO-Key: $(cat /home/pi/io.adafruit.key)" -X POST https://io.adafruit.com/api/feeds/$ID/data -d @$DF
 	ret=$?
 	rm $DF
+	echo
+	echo "[$ret] date is  $2"
 	return $ret 
 }
 
