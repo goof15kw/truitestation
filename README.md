@@ -1,7 +1,7 @@
 # V2 is now live. 
 Based on Prometheus, grafana and https://github.com/goof15kw/dht-exporter (thanks original authors)
 
-Prometheus.yaml in the root if this repo along with rc.local. 
+Prometheus.yaml in the root if this repo along with rc.local and a dashboard.json. 
 
 This repo is mainly my backup if the SD goes bad.
 
