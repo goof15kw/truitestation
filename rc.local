@@ -1,4 +1,4 @@
 cd /home/pi/work/dht-exporter/
 sudo python dht_exporter.py -g 25 4 -l interieur exterieur -s AM2302 AM2302 &
 cd /home/pi/soft/prometheus-2.15.1.linux-armv6
-su pi -c ./prometheus --storage.tsdb.retention.time=1y
+su pi -c './prometheus --storage.tsdb.retention.time=1y' &
