@@ -17,12 +17,12 @@ else
 	nap=300
 fi
 
-$GET_NET
-while [ $(date +%Y ) -lt 2016 ] ; 
-do 
-	sleep $nap 
-	$GET_NET 
-done
+#$GET_NET
+#while [ $(date +%Y ) -lt 2016 ] ; 
+#do 
+#	sleep $nap 
+#	$GET_NET 
+#done
 
 # 20130217-1945.log
 log_dir=/home/pi/logs/
@@ -59,6 +59,23 @@ AIOHRID4=630602
 AIOTEMPC25ID=630640
 AIOHRID25=630639
 
+function get_exp_n_post()
+{
+
+	temp4=$(curl http://localhost:8001 -q | grep exterieur | grep temperature  | cut -d" " -f2)
+	temp25=$(curl http://localhost:8001 -q | grep interieur | grep temperature  | cut -d" " -f2)
+	RH4=$(curl http://localhost:8001 -q | grep exterieur | grep humid  | cut -d" " -f2)
+	RH25=$(curl http://localhost:8001 -q | grep interieur | grep humid  | cut -d" " -f2)
+
+
+        d=$($GET_DATE)
+
+ 	post_adafruit.io $temp4 $AIOTEMPC4ID $d
+        post_adafruit.io $RH4 $AIOHRID4 $d
+
+     	post_adafruit.io $temp25 $AIOTEMPC25ID $d
+        post_adafruit.io $RH25 $AIOHRID25 $d
+}
 function get_n_log_united()
 {
 	#pin4
@@ -110,6 +127,7 @@ EOF
 log=${log_dir}united_$($GET_DATE)-$r.csv 
 while sleep $nap
 do
-	$GET_NET
-	get_n_log_united $log
+	#$GET_NET
+	#get_n_log_united $log
+	get_exp_n_post
 done
