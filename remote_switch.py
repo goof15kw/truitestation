@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Example of using the MQTT client class to subscribe to a feed and print out
 # any changes made to the feed.  Edit the variables below to configure the key,
 # username, and feed to subscribe to for changes.
@@ -57,7 +58,10 @@ def message(client, feed_id, payload):
 
 
 # Init led
-led = LED(14)
+# 14 is  110v outlet or socket-switch-pump-style
+#led = LED(14)
+# 15 is contactor
+led = LED(15)
 #led.off()
 
 # Create an instance of the REST client.
