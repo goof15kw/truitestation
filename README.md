@@ -1,6 +1,14 @@
-# V3.1 WIP
+# V3.1 io.adafruit.com remoteswitch
 * expose to io.adafruit.com using a few relays ( 120V and 240V via contactor)
-* still wip, in another rpi for now
+* Used to remotely turn on heat
+* systemd service files
+** (Pasting lines from history, might not be 100% exact)
+** sudo cp remoteswitchservice.sh /etc/init.d/
+** sudo chmod +x /etc/init.d/remoteswitchservice.sh 
+** sudo update-rc.d remoteswitchservice.sh defaults
+** sudo /etc/init.d/remoteswitchservice.sh start
+** journalctl  -u remoteswitchservice.service  -f
+
 
 # V3 is live
 

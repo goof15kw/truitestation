@@ -6,17 +6,15 @@
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Put a short description of the service here
-# Description:       Put a long description of the service here
+# Short-Description: Remote switch service.
+# Description:       Connect to io.adafruit.com and switch gpios accordingly
 ### END INIT INFO
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
-DIR=/usr/local/bin/myservice
 DIR=/home/pi/git/truitestation/
 
-DAEMON=$DIR/myservice.py
 DAEMON=$DIR/remote_switch.py
-DAEMON_NAME=truitestation
+DAEMON_NAME=remote_switch
 export ADAFRUIT_IO_KEY=$(cat /home/pi/io.adafruit.key)
 
 # Add any command line options for your daemon here

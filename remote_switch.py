@@ -86,10 +86,15 @@ client.on_disconnect = disconnected
 client.on_message    = message
 client.on_subscribe  = subscribe
 
-# Connect to the Adafruit IO server.
-client.connect()
+while True:
+  try:
+    # Connect to the Adafruit IO server.
+    client.connect()
 
-# Start a message loop that blocks forever waiting for MQTT messages to be
-# received.  Note there are other options for running the event loop like doing
-# so in a background thread--see the mqtt_client.py example to learn more.
-client.loop_blocking()
+    # Start a message loop that blocks forever waiting for MQTT messages to be
+    # received.  Note there are other options for running the event loop like doing
+    # so in a background thread--see the mqtt_client.py example to learn more.
+    client.loop_blocking()
+  except Exception as e:
+      print("Something went wrong, reconnecting:")
+      print(e)
