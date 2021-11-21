@@ -63,31 +63,30 @@ def message(client, feed_id, payload):
 # 15 is contactor
 led = LED(15)
 #led.off()
-
-# Create an instance of the REST client.
-aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
-
-chauffe01 = aio.feeds("chauffe-01")
-data = aio.receive(chauffe01.key)
-print('Initial fetch got {0}'.format(data.value))
-# This should forge a call to message... 
-if (data.value == "ON" ):
-  led.on()
-else:
-  led.off()
-aio = None
-
-# Create an MQTT client instance.
-client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY,secure=True)
-
-# Setup the callback functions defined above.
-client.on_connect    = connected
-client.on_disconnect = disconnected
-client.on_message    = message
-client.on_subscribe  = subscribe
-
 while True:
   try:
+    # Create an instance of the REST client.
+    aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
+
+    chauffe01 = aio.feeds("chauffe-01")
+    data = aio.receive(chauffe01.key)
+    print('Initial fetch got {0}'.format(data.value))
+    # This should forge a call to message... 
+    if (data.value == "ON" ):
+        led.on()
+    else:
+        led.off()
+    aio = None
+
+    # Create an MQTT client instance.
+    client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY,secure=True)
+
+    # Setup the callback functions defined above.
+    client.on_connect    = connected
+    client.on_disconnect = disconnected
+    client.on_message    = message
+    client.on_subscribe  = subscribe
+
     # Connect to the Adafruit IO server.
     client.connect()
 
